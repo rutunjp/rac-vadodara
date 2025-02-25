@@ -1,6 +1,7 @@
 "use client";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const images = [
@@ -98,9 +99,9 @@ export default function AboutPage() {
         <div className="mt-8 text-center text-gray-500 text-sm">
           <p>About Rotaract Club of Vadodara | {new Date().getFullYear()}</p>
           <p className="mt-1">
-            <a href="/" className="text-[#FF5733] hover:underline">
+            <Link href="/" className="text-[#FF5733] hover:underline">
               Back to Home
-            </a>
+            </Link>
           </p>
         </div>
       </main>

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 
 const boardMembers = [
   {
@@ -219,7 +220,7 @@ export default async function MemberPage({
             <h2 className="text-xl font-bold text-gray-900 mb-4">Connect</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Email */}
-              <a
+              <Link
                 href={`mailto:${member.email}`}
                 className="flex items-center p-4 border border-gray-200 rounded-xl hover:shadow-sm transition-shadow"
               >
@@ -248,11 +249,11 @@ export default async function MemberPage({
                   <p className="font-medium text-gray-900">Email</p>
                   <p className="text-gray-600 truncate">{member.email}</p>
                 </div>
-              </a>
+              </Link>
 
               {/* LinkedIn */}
               {member.linkedin && (
-                <a
+                <Link
                   href={member.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -277,12 +278,12 @@ export default async function MemberPage({
                     <p className="font-medium text-gray-900">LinkedIn</p>
                     <p className="text-gray-600">Connect on LinkedIn</p>
                   </div>
-                </a>
+                </Link>
               )}
 
               {/* Instagram */}
               {member.instagram && (
-                <a
+                <Link
                   href={member.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -307,12 +308,12 @@ export default async function MemberPage({
                     <p className="font-medium text-gray-900">Instagram</p>
                     <p className="text-gray-600">Follow on Instagram</p>
                   </div>
-                </a>
+                </Link>
               )}
 
               {/* Twitter */}
               {member.twitter && (
-                <a
+                <Link
                   href={member.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -337,12 +338,12 @@ export default async function MemberPage({
                     <p className="font-medium text-gray-900">Twitter</p>
                     <p className="text-gray-600">Follow on Twitter</p>
                   </div>
-                </a>
+                </Link>
               )}
 
               {/* Portfolio/Website */}
               {member.portfolio && (
-                <a
+                <Link
                   href={member.portfolio}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -373,7 +374,7 @@ export default async function MemberPage({
                     <p className="font-medium text-gray-900">Portfolio</p>
                     <p className="text-gray-600">Visit Website</p>
                   </div>
-                </a>
+                </Link>
               )}
             </div>
           </div>
@@ -383,9 +384,9 @@ export default async function MemberPage({
         <div className="mt-8 text-center text-gray-500 text-sm">
           <p>Board Member at Rotaract Club | {new Date().getFullYear()}</p>
           <p className="mt-1">
-            <a href="/team" className="text-[#FF5733] hover:underline">
+            <Link href="/team" className="text-[#FF5733] hover:underline">
               View All Board Members
-            </a>
+            </Link>
           </p>
         </div>
       </main>
