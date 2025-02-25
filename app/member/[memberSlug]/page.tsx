@@ -36,18 +36,17 @@ const boardMembers = [
   },
   // ... other members
 ];
-
 async function getMember(memberSlug: string) {
   const member = boardMembers.find((member) => member.slug === memberSlug);
   return member;
 }
-
 export async function generateMetadata({
   params,
 }: {
   params: { memberSlug: string };
 }): Promise<Metadata> {
-  const member = await getMember(params.memberSlug);
+  const awaitedParams = await params; // Await the params object
+  const member = await getMember(awaitedParams.memberSlug); // Use awaitedParams.memberSlug
   return {
     title: member?.name || "Member not found",
   };
@@ -58,7 +57,8 @@ export default async function MemberPage({
 }: {
   params: { memberSlug: string };
 }) {
-  const member = await getMember(params.memberSlug);
+  const awaitedParams = await params; // Await the params object
+  const member = boardMembers?.find((m) => m.slug === awaitedParams.memberSlug); // Use awaitedParams
 
   if (!member) {
     return <div>Member not found.</div>;
@@ -133,7 +133,7 @@ export default async function MemberPage({
                 className="mt-6 italic text-gray-600 border-l-4 pl-4 py-1"
                 style={{ borderColor: member.profileColor || "#FF5733" }}
               >
-                "{member.quote}"
+                `&quot;`{member.quote}`&quot;`
               </div>
             )}
           </div>
