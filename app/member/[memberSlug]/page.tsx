@@ -35,35 +35,62 @@ const boardMembers = [
     profileColor: "#FF5733",
     slug: "emily-rodriguez", // Added slug property
   },
+  {
+    id: "rutunj-parikh",
+    name: "rutunj Rodriguez",
+    role: "President",
+    photo: "/images/team/me.jpg",
+    email: "emily.rodriguez@rotaract.org",
+    linkedin: "https://linkedin.com/in/emilyrodriguez",
+    instagram: "https://instagram.com/emilyrodriguez",
+    twitter: "https://twitter.com/emilyrodriguez",
+    portfolio: "https://emilyrodriguez.com",
+    intro:
+      "Emily is a passionate community advocate with 5 years of Rotaract experience. She's currently pursuing her Master's in Public Administration and hopes to build stronger connections between our club and the community it serves.",
+    quote:
+      "Service above self isn't just a motto—it's how I try to live every day.",
+    achievements: [
+      "Led fundraising campaign that raised $25,000 for disaster relief",
+      "Developed new international partnership with clubs in 3 countries",
+      "Increased club membership by 40% through community outreach",
+    ],
+    education: "Master's in Public Administration, State University",
+    background: "Marketing specialist with focus on nonprofit organizations",
+    skills: [
+      "Project Management",
+      "Public Speaking",
+      "Strategic Planning",
+      "Fundraising",
+      "Community Outreach",
+    ],
+    profileColor: "#FF5733",
+    slug: "rutunj-parikh", // Added slug property
+  },
   // ... other members
 ];
-async function getMember(memberSlug: string) {
-  const member = boardMembers.find((member) => member.slug === memberSlug);
-  return member;
+
+function getMember(memberSlug: string) {
+  return boardMembers.find((member) => member.slug === memberSlug);
 }
+
 export async function generateMetadata({
   params,
 }: {
   params: { memberSlug: string };
 }): Promise<Metadata> {
-  const awaitedParams = await params; // Await the params object
-  const member = await getMember(awaitedParams.memberSlug); // Use awaitedParams.memberSlug
+  const member = getMember(params?.memberSlug);
   return {
     title: member?.name || "Member not found",
   };
 }
 
-export default async function MemberPage({
+export default function MemberPage({
   params,
 }: {
   params: { memberSlug: string };
 }) {
-  const awaitedParams = await params; // Await the params object
-  const member = boardMembers?.find((m) => m.slug === awaitedParams.memberSlug); // Use awaitedParams
-
-  if (!member) {
-    return <div>Member not found.</div>;
-  }
+  const member = getMember(params.memberSlug); // Directly use params
+  if (!member) return <div>Member not found.</div>;
 
   return (
     <div className="min-h-screen bg-gray-50">
